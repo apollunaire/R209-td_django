@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'secondapp/index.css' %}">
+    <title> {% block title %}Mon Site {% endblock %} </title>
+</head>
+<body>
+    <h1>{% block h1 %}Titre {% endblock %}</h1>
+    <aside id="sidebar">
+        {% block sidebar %}
+            <ul>
+                <li><a href="/secondapp/all">Home</a></li>
+                <li><a href="/secondapp/ajout">Ajout</a></li>
+            </ul>
+        {% endblock %}
+    </aside>
+    <div id="content">
+        {% block content %}
+            <h1> Bibliothèque </h1>
+        {% endblock %}
+    </div>
+
+</body>
+</html>

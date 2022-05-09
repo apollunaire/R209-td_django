@@ -1,0 +1,101 @@
+.main {
+    background-color: yellowgreen;
+    width: 70%;
+    margin: auto;
+}
+
+nav {
+    display: table;
+    width : 100%;
+}
+
+nav > a {
+    display: table-cell;
+    width : 25%;
+    text-align: center;
+    border: 8px;
+    margin: auto;
+    background-color : darkgrey;
+}
+
+h1 {
+    text-align: center;
+    margin-top: auto;
+    background-color: cadetblue;
+}
+
+section {
+    width: 80%;
+    display: table;
+    box-sizing: border-box;
+    background-color: lightgreen;
+}
+
+section > article {
+    display: inline-block;
+    width: 45%;
+    box-sizing: border-box;
+    padding: 2%;
+    margin:15px;
+    margin-bottom: 5px;
+    background-color: greenyellow;
+    border: 1px outset black;
+    border-radius: 30px;
+}
+
+article > p {
+    column-count: 2;
+}
+
+article > footer {
+    text-align: right;
+}
+
+aside {
+    float: left;
+    width: 20%;
+    background-color: aliceblue;
+    box-sizing: border-box;
+    vertical-align: text-top;
+    padding: 1%;
+}
+
+footer {
+    text-align: center;
+}
+
+@media screen and (max-width : 1200px) {
+    .main {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width : 960px) {
+    article > p {
+        column-count: 1;
+    }
+    section {
+        width: 98%;
+    }
+    aside {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width : 600px) {
+    .main {
+        width: 100%;
+    }
+    
+    h1 {
+        background-color: yellowgreen;
+    }
+    aside {
+        display: none;
+    }
+    
+    section > article {
+        width: 100%;
+    }
+    
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+{% extends "myfirstapp/main.html" %}
+{% block title %}Mon formulaire {% endblock %}
+{% block h1 %}Page d'accueil {% endblock %}
+{% block sidebar %}{{block.super}}{% endblock %}
+    {% block content %}
+    {{block.super}}
+    {%if prenom != "" and nom != "" %}
+        <p> Hello {{prenom}} {{nom}} </p>
+    {% else %}
+        <p> Hello world </p>
+    {%endif%}
+    {% if age != "" %}
+        <p> Vous avez {{age}} ans </p>
+    {%endif%}
+    {% endblock %}
+</html>

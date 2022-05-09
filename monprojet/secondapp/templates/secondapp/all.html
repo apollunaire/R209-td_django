@@ -1,0 +1,10 @@
+{% extends "secondapp/main.html" %}
+{% block title %} Bibliothèque {% endblock %}
+{% block h1 %} Menu {% endblock %}
+    {% block content %}
+        {{block.super}}
+            {% csrf_token %}
+        {% for livre in liste %}
+            <p>{{livre.id}}. {{livre}}, date de parution : {{livre.date_parution|date:"d/m/Y"}} <a href="/secondapp/affiche/{{livre.id}}/">détails</a> <a href="/secondapp/update/{{livre.id}}/">modifier l'entrée</a> <a href="/secondapp/delete/{{livre.id}}">supprimer l'entrée</a> </p>
+        {% endfor %}
+    {% endblock %}
