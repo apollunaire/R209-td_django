@@ -6,7 +6,7 @@
                 {% block content %}
                 <article class="formulaire">
                     <h2>Disquaire {{disquaire.id}} :</h2>
-                    <form method="post" action="/disque/traitementupdatedisquaire/{{id}}">
+                    <form method="post" action="/disque/traitementupdatedisquaire/{{id}}"></form>
                     {% csrf_token %}
                     {{ form.as_p }}
                         <input type="submit" value="envoyer les données">

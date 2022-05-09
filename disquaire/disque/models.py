@@ -12,6 +12,7 @@ GENRE_OPTION = (
         ('Indie rock','Indie rock'),
         ('Pop','Pop'),
         ('Métal','Métal'),
+        ('Classique', 'Classique'),
     )
 class Disquaire(models.Model):
     nom = models.CharField(max_length=100)
@@ -44,12 +45,6 @@ class Disque(models.Model):
 
     def dico(self):
         return {'magasin': self.magasin, 'titre': self.titre, 'label': self.label, 'artiste': self.artiste, 'date_sortie': self.date_sortie, 'nb_morceaux': self.nb_morceaux, 'duree': self.duree, 'image': self.image}
-
-    def count(self, disquaire):
-        nb=0
-        if self.magasin == disquaire:
-            nb+=1
-        return nb
 
     @classmethod
     def recup_option(cls):

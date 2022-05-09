@@ -24,9 +24,8 @@ class DisquaireForm(ModelForm):
 class DisqueForm(ModelForm):
     class Meta:
         model = models.Disque
-        fields = ('magasin', 'titre', 'label', 'artiste', 'date_sortie', 'nb_morceaux', 'genre', 'duree', 'image')
+        fields = ('titre', 'label', 'artiste', 'date_sortie', 'nb_morceaux', 'genre', 'duree', 'image')
         labels = {
-            'magasin': _('Magasin'),
             'titre' : _('Titre'),
             'label' : _('Label'),
             'artiste' : _('Artiste'),

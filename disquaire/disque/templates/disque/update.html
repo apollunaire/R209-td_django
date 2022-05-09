@@ -9,7 +9,7 @@
                     <form method="post" action="/disque/traitementupdate/{{id}}">
                     {% csrf_token %}
                     {{ form.as_p }}
-                        <input type="submit" value="envoyer les données">
+                        <input type="submit" value="envoyer les données"></form>
                         <button><a href="/disque/alldisquaire/">annuler</a></button>
                 </article>
                 {% endblock %}

@@ -10,7 +10,7 @@
                 {% block content %}
                 <article class="formulaire">
                     <h2>Nouveau disque :</h2>
-                    <form method="post" action="/disque/traitement">
+                    <form method="post" action="/disque/traitement/{{id}}/">
                     {% csrf_token %}
                     {{ form.as_p }}
                         <input type="submit" value="envoyer les données">
