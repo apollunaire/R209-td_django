@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'disque/index.css' %}">
+    <title> {% block title %}Mon Site {% endblock %} </title>
+</head>
+<body>
+    <div class="main">
+        {% block main %}
+        <h1>{% block h1 %}Titre de la page {% endblock %}</h1>
+            <nav>
+                <a href="/disque/alldisquaire"> Accueil</a>
+                <a href="/disque/ajoutdisquaire"> Ajouter un disquaire</a>
+                <a href="/disque/ajout"> Ajouter un disque</a>
+            </nav>
+        <aside id="sidebar">
+            {% block sidebar %}
+            <h2>{% block h2 %} Titre {% endblock %}</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu tincidunt purus. Curabitur ultricies justo eget neque dapibus, a sodales mauris auctor. In tempor eros ac tristique blandit. Sed laoreet enim at orci mattis ullamcorper. Phasellus sit amet congue est. Nullam non velit vestibulum, ultrices quam vel, aliquet metus.
+            {% endblock %}
+        </aside>
+        <section id="section">
+            {% block section %}
+            {% block h22 %} Titre {% endblock %}
+            {% endblock %}
+                </section>
+        {% endblock %}
+        <footer><p>test footer</p></footer>
+        </div>
+
+</body>
+</html>

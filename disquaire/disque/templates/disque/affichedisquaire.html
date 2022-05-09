@@ -1,0 +1,26 @@
+{% extends "disque/main.html" %}
+
+{% block title %} Accueil {% endblock %}
+        {% block h1 %} Détails {% endblock %}
+            {% block sidebar %}
+            <h2>Présentation </h2>
+            <p>Ce site vous permet d'accéder aux différents disquaires de la région ainsi qu'aux disques en vente chez chacun d'entre eux.</p>
+            <p>Vous êtes disquaires et vous n'apparaissez pas sur cette page ? Cliquez <a href="/disque/ajoutdisquaire">ici</a> pour ajouter votre magasin.</p>
+            {% endblock %}
+            {% block section %}
+                    <h2>{{disquaire.nom}}</h2>
+                    {% for disque in liste %}
+                    {% if disque.magasin == disquaire %}
+                    <article class="article">
+                        <h3>{{disque.titre}} de {{disque.artiste}}</h3>
+                        <div class="image"><img src="{{disque.image}}" height="100px" width="100px"></div>
+                            <p>{{disque.titre}} de {{disque.artiste}} est sorti le {{disque.date_sortie|date:"d/m/Y"}} sous le label {{disque.label}}. C'est un album de {{disque.genre}} qui dure {{disque.duree|time:"HH: MM :SS"}} minutes </p>
+                                <div class="boutons">
+                                    <a href="/disque/update/{{disque.id}}/"><button>modifier l'entrée </button></a>
+                                    <a href="/disque/delete/{{disque.id}}"><button>supprimer l'entrée</button></a>
+                                </div>
+                    </article>
+        {% endif %}
+        {% endfor %}
+        <p>Pour ajouter un disque, cliquez <a href="/disque/ajout/">ici</a>.</p>
+        {% endblock %}

@@ -1,0 +1,17 @@
+{% extends "disque/formulaire.html" %}
+{% block title %} Formulaire {% endblock %}
+    {% block super %}
+        {% block h1 %} Formulaire mise à jour disque {% endblock %}
+            {% block section %}
+                {% block content %}
+                <article class="formulaire">
+                    <h2>Disque {{disque.id}} :</h2>
+                    <form method="post" action="/disque/traitementupdate/{{id}}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                        <input type="submit" value="envoyer les données">
+                        <button><a href="/disque/alldisquaire/">annuler</a></button>
+                </article>
+                {% endblock %}
+                {% endblock %}
+            {% endblock %}
