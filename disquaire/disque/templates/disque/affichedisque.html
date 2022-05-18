@@ -1,0 +1,23 @@
+{% extends "disque/main.html" %}
+
+{% block title %} Disque {% endblock %}
+        {% block h1 %} Détails {% endblock %}
+            {% block sidebar %}
+            <h2>Explications</h2>
+                <p>Retrouvez ici tous les détails du disque que vous avez sélctionné.</p>
+            {% endblock %}
+            {% block section %}
+                    <article class="details">
+                        <h3>{{disque.titre}} de {{disque.artiste}}</h3>
+                        <div class="image"><img src="{{disque.image}}" height="250px" width="250px">
+                            <p><b>Titre :</b> {{disque.titre}}</p>
+                            <p><b>Artiste :</b> {{disque.artiste}}</p>
+                            <p><b>Date de sortie :</b> {{disque.date_sortie|date:"d/m/Y"}}</p>
+                            <p><b>Label :</b> {{disque.label}}</p>
+                            <p><b>Genre :</b> {{disque.genre}}</p>
+                            <p><b>Durée :</b> {{disque.duree}}</p>
+                                    <a href="/disque/update/{{disque.id}}/"><button>modifier l'entrée </button></a>
+                                    <a href="/disque/delete/{{disque.id}}"><button>supprimer l'entrée</button></a>
+                            </div>
+                    </article>
+        {% endblock %}

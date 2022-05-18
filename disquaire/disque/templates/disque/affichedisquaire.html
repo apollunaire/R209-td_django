@@ -14,8 +14,9 @@
                     <article class="article">
                         <h3>{{disque.titre}} de {{disque.artiste}}</h3>
                         <div class="image"><img src="{{disque.image}}" height="100px" width="100px"></div>
-                            <p>{{disque.titre}} de {{disque.artiste}} est sorti le {{disque.date_sortie|date:"d/m/Y"}} sous le label {{disque.label}}. C'est un album de {{disque.genre}} qui dure {{disque.duree|time:"HH: MM :SS"}} minutes </p>
+                            <p>{{disque.titre}} de {{disque.artiste}} est sorti le {{disque.date_sortie|date:"d/m/Y"}} sous le label {{disque.label}}.</p>
                                 <div class="boutons">
+                                    <a href="/disque/affichedisque/{{disque.id}}"><button>détails</button></a>
                                     <a href="/disque/update/{{disque.id}}/"><button>modifier l'entrée </button></a>
                                     <a href="/disque/delete/{{disque.id}}"><button>supprimer l'entrée</button></a>
                                 </div>

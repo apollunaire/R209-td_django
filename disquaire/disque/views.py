@@ -25,8 +25,8 @@ def traitement(request, id):
     lform = DisqueForm(request.POST)
     if lform.is_valid():
         disque = lform.save(commit=False)
-        disque.disquaire = disquaire
-        disque.disquaire_id = id
+        disque.magasin = disquaire
+        disque.magasin_id = id
         disque.save()
         return HttpResponseRedirect("/disque/alldisquaire")
     else:
@@ -38,9 +38,10 @@ def all(request):
     return render(request, "disque/all.html", {"liste": liste})
 
 
-def affiche(request, id):
+def affichedisque(request, id):
     disque = models.Disque.objects.get(pk=id)
-    return render(request, "disque/affiche.html", {"disque" : disque})
+    return render(request, "disque/affichedisque.html", {"disque" : disque})
+
 
 
 def update(request, id):

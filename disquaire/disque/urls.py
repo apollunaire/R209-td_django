@@ -16,4 +16,5 @@ urlpatterns = [
     path('traitementupdate/<int:id>', views.traitementupdate),
     path('delete/<int:id>/', views.delete),
     path('deletedisquaire/<int:id>/', views.deletedisquaire),
+    path('affichedisque/<int:id>/', views.affichedisque),
 ]
