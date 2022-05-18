@@ -8,7 +8,7 @@ urlpatterns = [
     path("ajoutdisquaire/", views.ajoutdisquaire),
     path("traitement/<int:id>/", views.traitement),
     path("traitementdisquaire", views.traitementdisquaire),
-    path("alldisquaire/", views.alldisquaire),
+    #path("alldisquaire/", views.alldisquaire),
     path('affichedisquaire/<int:id>/', views.affichedisquaire),
     path('updatedisquaire/<int:id>/', views.updatedisquaire),
     path('traitementupdatedisquaire/<int:id>', views.traitementupdatedisquaire),
@@ -17,4 +17,5 @@ urlpatterns = [
     path('delete/<int:id>/', views.delete),
     path('deletedisquaire/<int:id>/', views.deletedisquaire),
     path('affichedisque/<int:id>/', views.affichedisque),
+    path('disques/', views.disques),
 ]

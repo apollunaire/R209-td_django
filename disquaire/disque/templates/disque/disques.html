@@ -1,0 +1,23 @@
+{% extends "disque/main.html" %}
+
+{% block title %} Liste des disques {% endblock %}
+        {% block h1 %} Disques {% endblock %}
+            {% block sidebar %}
+            <h2>Explications</h2>
+                <p>Retrouvez ici tous les disques indépendament des disquaires.</p>
+            {% endblock %}
+            {% block section %}
+<ol>
+    {% for disque in liste %}
+                    <li class="disquess">
+                        <p>{{disque.titre}} de {{disque.artiste}}.
+                            <a href="/disque/affichedisque/{{disque.id}}"><button>détails</button></a>
+                            <a href="/disque/update/{{disque.id}}/"><button>modifier l'entrée </button></a>
+                            <a href="/disque/delete/{{disque.id}}"><button>supprimer l'entrée</button></a>
+                        </p>
+                    </li>
+        {% endfor %}
+        {% endblock %}
+
+</ol>
+

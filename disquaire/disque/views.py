@@ -10,7 +10,9 @@ def index(request):
     return render(request, "disque/index.html")
 
 def main(resquest):
-    return render(resquest, 'disque/main.html')
+    liste = models.Disquaire.objects.all()
+    return render(resquest, 'disque/main.html', {"liste" : liste})
+
 
 
 ####### DISQUES #######
@@ -28,7 +30,7 @@ def traitement(request, id):
         disque.magasin = disquaire
         disque.magasin_id = id
         disque.save()
-        return HttpResponseRedirect("/disque/alldisquaire")
+        return HttpResponseRedirect("/disque/main")
     else:
         return render(request, "disque/ajout.html", {"form" : lform})
 
@@ -41,7 +43,6 @@ def all(request):
 def affichedisque(request, id):
     disque = models.Disque.objects.get(pk=id)
     return render(request, "disque/affichedisque.html", {"disque" : disque})
-
 
 
 def update(request, id):
@@ -58,7 +59,7 @@ def traitementupdate(request, id):
         disque.magasin = disquaire
         disque.magasin_id = id
         disque.save()
-        return HttpResponseRedirect("/disque/alldisquaire/")
+        return HttpResponseRedirect("/disque/main/")
     else:
         return render(request, "disque/update.html", {"form": lform, "id": id})
 
@@ -66,8 +67,12 @@ def traitementupdate(request, id):
 def delete(request, id):
     disque = models.Disque.objects.get(pk=id)
     disque.delete()
-    return HttpResponseRedirect("/disque/alldisquaire")
+    return HttpResponseRedirect("/disque/main")
 
+
+def disques(request):
+    liste = models.Disque.objects.all()
+    return render(request, "disque/disques.html", {"liste": liste})
 
 
 ####### DISQUAIRES #######
@@ -89,14 +94,14 @@ def traitementdisquaire(request):
     lform = DisquaireForm(request.POST)
     if lform.is_valid():
         disquaire = lform.save()
-        return HttpResponseRedirect("/disque/alldisquaire")
+        return HttpResponseRedirect("/disque/main")
     else:
         return render(request, "disque/ajoutdisquaire.html", {"form" : lform})
 
 
 def alldisquaire(request):
     liste = models.Disquaire.objects.all()
-    return render(request, "disque/alldisquaire.html", {"liste" : liste})
+    return render(request, "disque/main.html", {"liste" : liste})
 
 
 def affichedisquaire(request, id):
@@ -117,7 +122,7 @@ def traitementupdatedisquaire(request, id):
         disquaire = lform.save(commit=False)
         disquaire.id = id
         disquaire.save()
-        return HttpResponseRedirect("/disque/alldisquaire")
+        return HttpResponseRedirect("/disque/main")
     else:
         return render(request, "disque/updatedisquaire.html", {"form": lform, "id": id})
 
@@ -125,4 +130,4 @@ def traitementupdatedisquaire(request, id):
 def deletedisquaire(request, id):
     disquaire = models.Disquaire.objects.get(pk=id)
     disquaire.delete()
-    return HttpResponseRedirect("/disque/alldisquaire")
+    return HttpResponseRedirect("/disque/main")

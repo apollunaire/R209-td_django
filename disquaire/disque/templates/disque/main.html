@@ -3,26 +3,65 @@
 <head>
     {% load static %}
     <link rel="stylesheet" href="{%static 'disque/index.css' %}">
-    <title> {% block title %}Mon Site {% endblock %} </title>
+    <title> {% block title %}Accueil{% endblock %} </title>
 </head>
 <body>
     <div class="main">
         {% block main %}
-        <h1>{% block h1 %}Titre de la page {% endblock %}</h1>
+        <h1>{% block h1 %}Page d'accueil{% endblock %}</h1>
             <nav>
-                <a href="/disque/alldisquaire"> Accueil</a>
+                <a href="/disque/main"> Accueil</a>
                 <a href="/disque/ajoutdisquaire"> Ajouter un disquaire</a>
+                <a href="/disque/disques">Voir tous les disques</a>
             </nav>
         <aside id="sidebar">
             {% block sidebar %}
-            <h2>{% block h2 %} Titre {% endblock %}</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu tincidunt purus. Curabitur ultricies justo eget neque dapibus, a sodales mauris auctor. In tempor eros ac tristique blandit. Sed laoreet enim at orci mattis ullamcorper. Phasellus sit amet congue est. Nullam non velit vestibulum, ultrices quam vel, aliquet metus.
+            <h2>{% block h2 %} Présentation {% endblock %}</h2>
+            <p>Ce site vous permet d'accéder aux différents disquaires de la région ainsi qu'aux disques en vente chez chacun d'entre eux.</p>
+            <p>Vous êtes disquaire mais vous n'apparaissez pas sur cette page ? Cliquez <a href="/disque/ajoutdisquaire">ici</a> pour ajouter votre magasin.</p>
             {% endblock %}
         </aside>
         <section id="section">
             {% block section %}
-            {% block h22 %} Titre {% endblock %}
-            {% endblock %}
+            {% block h22 %} <h2>Disquaires</h2> {% endblock %}
+            {% if liste|length == 0 %}
+                <p>Il n'y a pas de disquaire pour le moment. Pour en ajouter un cliquez <a href="/disque/ajoutdisquaire/">ici</a>.</p>
+                {% else %}
+                {% if liste|length == 1 %}
+                    <p>Il n'y a qu'un disquaire pour le moment :</p>
+                    {% for disquaire in liste %}
+                    <article class="disquaires">
+                        <h3>{{disquaire.nom}}</h3>
+                        <p>Adresse : {{disquaire.num_rue}} rue de {{disquaire.nom_rue}}, {{disquaire.cp}} {{disquaire.ville}}</p>
+                        <p>Contact : <a href="tel:{{disquaire.num_tel}}">{{disquaire.num_tel}}</a></p>
+                        <button><a href="/disque/affichedisquaire/{{disquaire.id}}/">détails</a></button>
+                        <button><a href="/disque/updatedisquaire/{{disquaire.id}}/">modifier l'entrée</a></button>
+                        <button><a href="/disque/deletedisquaire/{{disquaire.id}}">supprimer l'entrée</a></button>
+                    </article>
+                <p>Pour en ajouter d'autres cliquez <a href="/disque/ajoutdisquaire/">ici</a>.</p>
+                {% endfor %}
+                {% else %}
+                    <p>Il y a {{ liste|length }} disquaires.</p>
+                    {% for disquaire in liste %}
+                    {% block art %}
+                    <article class="disquaires">
+                    {% block content %}
+                    <h3>{{disquaire.nom}}</h3>
+                        <p>Adresse : {{disquaire.num_rue}} {{disquaire.nom_rue}}, {{disquaire.cp}} {{disquaire.ville}}</p>
+                        <p>Site web : <a href="{{disquaire.site}}">Lien vers le site de {{disquaire.nom}}</a> </p>
+                        <p>Contact : <a href="tel:{{disquaire.num_tel}}">{{disquaire.num_tel}}</a></p>
+                            <div class="boutons">
+                                <a href="/disque/affichedisquaire/{{disquaire.id}}/"><button>détails</button></a>
+                                <a href="/disque/updatedisquaire/{{disquaire.id}}/"><button>modifier l'entrée</button></a>
+                                <a href="/disque/deletedisquaire/{{disquaire.id}}"><button>supprimer l'entrée</button></a>
+                            </div>
+                    </article>
+                        {% endblock %}
+                {% endblock %}
+                {% endfor %}
+                {% endif %}
+                {% endif %}
+                {% endblock %}
         </section>
         {% endblock %}
 
