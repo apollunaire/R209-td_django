@@ -6,11 +6,12 @@
                 {% block content %}
                 <article class="formulaire">
                     <h2>Disquaire {{disquaire.id}} :</h2>
-                    <form method="post" action="/disque/traitementupdatedisquaire/{{id}}"></form>
+                    <form method="post" action="/disque/traitementupdatedisquaire/{{id}}">
                     {% csrf_token %}
                     {{ form.as_p }}
                         <input type="submit" value="envoyer les données">
-                        <button><a href="/disque/alldisquaire/">annuler</a></button>
+                        <a href="/disque/alldisquaire/"><button>annuler</button></a>
+                    </form>
                 </article>
                 {% endblock %}
                 {% endblock %}

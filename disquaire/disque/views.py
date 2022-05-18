@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .forms import DisqueForm, DisquaireForm
-from  . import models
+from . import models
 from django.http import HttpResponseRedirect
 
 
@@ -25,8 +25,8 @@ def traitement(request, id):
     lform = DisqueForm(request.POST)
     if lform.is_valid():
         disque = lform.save(commit=False)
-        disque.magasin = disquaire
-        disque.magasin_id = id
+        disque.disquaire = disquaire
+        disque.disquaire_id = id
         disque.save()
         return HttpResponseRedirect("/disque/alldisquaire")
     else:
@@ -50,10 +50,12 @@ def update(request, id):
 
 
 def traitementupdate(request, id):
+    disquaire = models.Disquaire.objects.get(pk=id)
     lform = DisqueForm(request.POST)
     if lform.is_valid():
         disque = lform.save(commit=False)
-        disque.id = id
+        disque.magasin = disquaire
+        disque.magasin_id = id
         disque.save()
         return HttpResponseRedirect("/disque/alldisquaire/")
     else:
@@ -123,22 +125,3 @@ def deletedisquaire(request, id):
     disquaire = models.Disquaire.objects.get(pk=id)
     disquaire.delete()
     return HttpResponseRedirect("/disque/alldisquaire")
-
-
-
-
-####### BORDEL #######
-
-
-
-"""def ajout(request):
-    if request.method == "POST":
-            form = (request)
-            if form.is_valid():
-                disque = form.save()
-                return render(request, "disque/affichedisque.html", {"disque" : disque})
-            else:
-                return render(request, "disque/ajout.html", {"form" : form, "id" : id})
-        else:
-            form = DisqueForm()
-            return render(request, "disque/ajout.html", {"form" : form, "id" : id})"""
