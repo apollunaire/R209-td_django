@@ -1,6 +1,10 @@
-{% extends "disque/formulaire.html" %}
+{% extends "disque/main.html" %}
 {% block title %} Formulaire {% endblock %}
     {% block super %}
+        {% block sidebar %}
+        <h2> Explications </h2>
+        <p>Sur cette page vous pouvez ajouter des disquaires. Pour avoir un aperçu des différents disquaire, rendez-vous sur <a href="/disque/alldisquaire/">cette page</a>.</p>
+        {% endblock %}
         {% block h1 %} Formulaire ajout disquaire {% endblock %}
             {% block section %}
                 {% block content %}
